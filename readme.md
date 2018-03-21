@@ -6,6 +6,7 @@ To install, edit the .env file to set your database information, then use normal
 php artisan db:seed
 
 The default use name and password for the admin are:
+
 jo@jo.com
 password
 
