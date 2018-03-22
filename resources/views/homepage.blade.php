@@ -19,7 +19,7 @@
         <div class="menuLinks"><a class="shownArrow" href="{{ URL::to('/donate') }}">Donate</a></div>
         <div class="menuLinks">
             <div class="dropdown">
-                <button class="dropbtn">&#9776;</button>
+                <button class="dropbtn dropBtnPos">&#9776;</button>
                 <div class="dropdown-content">
                     @role('admin','shop-keeper')
                     <a href="{{ URL::to('/admin/logout') }}">Logout</a>
@@ -54,7 +54,9 @@
     ?>
     @role('admin')
     <br>
-    <div class="myButton"><a class="editButton" href="{{ URL::to('/edit/'.$id) }}">Edit this post</a><br></div>
+    <div class="myButton">
+        <button class="editButton" onclick="window.location.href='{{ URL::to('/edit/'.$id) }}'">Edit this post</button>
+    </div>
     <div class="myButton">
         <form method="post" action="{{ URL::to('/edit/'.$id) }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">

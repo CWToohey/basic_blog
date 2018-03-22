@@ -71,7 +71,7 @@ class HomeController extends Controller
                 $post = $newPost[0][0];
                 if (count($newPost[1][0]) < 1) $last = true; else $last = false;
                 $picsPath = $this->getPic($post);
-            } elseif (count($newPost[0]) == 0) {
+            } elseif (!($request->has('next') || $request->has('prev'))) {
                 $newPost[0] = posts::where('id', '=', $request->get('id'))->orderBy('id', 'asc')->take(1)->get()->toArray();
                 $post = $newPost[0][0];
                 $picsPath = $this->getPic($post);
@@ -100,7 +100,7 @@ class HomeController extends Controller
 
     public function getArchives(Request $request)
     {
-        $count = 3;
+        $count = 50;
         if ($request->has('lastId')) {
             $lastSearched = $request->get('lastId');
         } else {

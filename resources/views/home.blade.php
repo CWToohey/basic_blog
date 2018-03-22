@@ -18,11 +18,11 @@
                     <input name="_method" type="hidden" value="{{ $method }}">
 
                     <div class="myInputs">
-                        POST TITLE: <input name="title" id="title" value="{{ $posted['title'] ?? '' }}"
+                        POST TITLE <input name="title" id="title" value="{{ $posted['title'] ?? '' }}"
                                            placeholder="Title here">
                     </div>
                     <div class="myInputs">
-                        <input class="fileUpload" type="file" name="anImage" id="anImage">
+                        PHOTO <input class="fileUpload" type="file" name="anImage" id="anImage">
                     </div>
                     @if(isset($posted['path']))
                         <div class="myInputs">
@@ -36,8 +36,6 @@
                     @endif
                     <div class="myInputs">
                         TEXT
-                    </div>
-                    <div class="myInputs">
                         <textarea id="textContent" name="textContent" placeholder="Text here">{{ $posted['content'] ?? '' }}</textarea>
                         <input type="submit" value="Submit">
                     </div>

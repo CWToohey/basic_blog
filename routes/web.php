@@ -35,8 +35,12 @@ Route::group(['prefix' => '/','middleware' => ['role:admin']],function() {
     Route::resource('findDonations', 'donorController');
 });
 
+Route::resource('search', 'searchController');
 
 Route::get('/', 'HomeController@index');
+Route::get('/changePost', 'HomeController@nextPrev');
+Route::get('/archives', 'HomeController@getArchives');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/biography', function() {
     return view('biography')
@@ -57,12 +61,7 @@ Route::get('/test', function () {
     return view('welcome');
 });
 
-Route::get('/changePost', 'HomeController@nextPrev');
 Route::resource('/donate','donateController');
-
-Route::get('/archives', 'HomeController@getArchives');
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/ajx', function() {
     return view('ajax');

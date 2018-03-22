@@ -19,13 +19,12 @@
             <div class="menuLinks"><a class="shownArrow" href="{{ URL::to('/donate') }}">Donate</a></div>
             <div class="menuLinks">
                 <div class="dropdown">
-                    <button class="dropbtn">&#9776;</button>
+                    <button class="dropbtn dropBtnPos">&#9776;</button>
                     <div class="dropdown-content">
                         @role('admin','shop-keeper')
                         <a href="{{ URL::to('/admin/logout') }}">Logout</a>
                         @else
                             <a href="{{ URL::to('/admin/login') }}">Login</a>
-                            <a href="{{ URL::to('/admin/register') }}">Register</a>
                             @endrole
                             <a href="{{ URL::to('/') }}/archives">Archives</a>
                             <a href="{{ URL::to('/') }}/donate">Donate</a>

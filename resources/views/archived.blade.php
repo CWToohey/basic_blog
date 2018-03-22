@@ -16,20 +16,23 @@ $rightArrow = $lastId;
         </div>
         @role('admin')
         <div class="menuLinks"><a class="shownArrow" href="{{ URL::to('/addPost') }}">Add Post</a></div>
-        @endrole
+        <div class="menuLinks"><a class="shownArrow" href="{{ URL::to('/findDonations') }}">Donors</a></div>
+        @else
+            <div class="menuLinks"><a class="shownArrow" href="{{ URL::to('/biography') }}">Biography</a></div>
+            @endrole
+
         <div class="menuLinks"><a class="dropbtn" href="{{ URL::to('/') }}">&#8962;</a></div>
 
         <div class="menuLinks"><a class="shownArrow" href="{{ URL::to('/donate') }}">Donate</a></div>
         <div class="menuLinks">
             <div class="dropdown">
-                <button class="dropbtn">&#9776;</button>
+                <button class="dropbtn dropBtnPos">&#9776;</button>
                 <div class="dropdown-content">
                     @role('admin','shop-keeper')
                     <a href="{{ URL::to('/admin/logout') }}">Logout</a>
                     @else
                         <a href="{{ URL::to('/admin/login') }}">Login</a>
                         @endrole
-                        <a href="{{ URL::to('/admin/register') }}">Register</a>
                         <a href="{{ URL::to('/') }}/archives">Archives</a>
                         <a href="{{ URL::to('/') }}/donate">Donate</a>
                 </div>
@@ -46,9 +49,12 @@ $rightArrow = $lastId;
 @endsection
 
 @section('content')
-    <div class="pics"><img class="picsElement" src="images/images2.jpeg" alt="missing image"></div>
     <div class="searchBox">
-        <input type="text" placeholder="  Search by keyword"><br>
+        <form method="post" action="{{ URL::to('/search') }}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="text" name="searchFor" placeholder="  Search by keyword">
+            <input type="submit" value="Search">
+        </form>
     </div>
     @foreach($posts as $post)
         <div class="archives">

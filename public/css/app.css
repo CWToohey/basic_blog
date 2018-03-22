@@ -194,6 +194,7 @@ input[type=file] {
 }
 
 input[type=submit] {
+    font-size: 15px;
     margin-top: 10px;
     background: #DDDDDD;
     border: 1px solid #DDDDDD;
@@ -209,7 +210,18 @@ input[type=submit]:hover {
     background: #ffffff;
 }
 
+.myInputs {
+    font-size: 15px;
+    margin-top: 5px;
+    font-weight: bold;
+    border-radius: 5px;
+    color: black;
+    padding: 5px;
+}
+
 .editButton {
+    font-size: 15px;
+    margin-top: 10px;
     background: #DDDDDD;
     border: 1px solid #DDDDDD;
     font-weight: bold;
@@ -217,13 +229,7 @@ input[type=submit]:hover {
     color: black;
     padding: 5px;
 }
-
-a.editButton {
-    text-decoration: none;
-    color: black;
-}
-
-a.editButton:hover {
+.editButton:hover {
     color: #04BFCC;
     border: 1px solid #DDDDDD;
     background: #ffffff;
@@ -391,12 +397,14 @@ input.amount {
 }
 
 .dropbtn {
-    /*background-color: #4CAF50;*/
-    /*color: white;*/
-    /*padding: 16px;*/
     font-size: 14px;
-    /*border: none;*/
 }
+
+.dropBtnPos {
+    position: relative;
+    top: -5px;
+}
+
 
 a.dropbtn {
     text-decoration: none;

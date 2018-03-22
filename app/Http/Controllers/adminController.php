@@ -105,9 +105,12 @@ class adminController extends Controller
         $posts = posts::where('id', '=', $id)->first();
         $posts->title = $request->title;
         $posts->content = $request->textContent;
-        $posts->save();
         $pics = $posts->pics;
         $picsPath = $this->getPicsPath($request, $pics);
+        if(count($picsPath)) {
+            $posts->pics = $pics;
+        }
+        $posts->save();
         return redirect(URL('changePost?id=' . $id));
     }
 
