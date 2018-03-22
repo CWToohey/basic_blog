@@ -29,7 +29,8 @@ class HomeController extends Controller
         if ($post != null) {
             $post = $post->toArray();
             if (count($post) > 1) $first = false; else $first = true;
-            $post = $post[0];
+            if (count($post) > 0) $post = $post[0]; else $post = ['id' => -1, 'title' => '', 'content' => ''];
+
 
         } else {
             $post = ['id' => -1, 'title' => '', 'content' => ''];
@@ -52,7 +53,7 @@ class HomeController extends Controller
             $prv = '<';
             if ($request->has('next')) {
                 $prv = '<=';
-            } elseif($request->has('prev')) {
+            } elseif ($request->has('prev')) {
                 $nxt = '>=';
             }
 
@@ -64,11 +65,11 @@ class HomeController extends Controller
 
             if ($request->has('next')) {
                 $post = $newPost[1][0];
-                if(count($newPost[0][0]) < 1) $first = true; else $first = false;
+                if (count($newPost[0][0]) < 1) $first = true; else $first = false;
                 $picsPath = $this->getPic($post);
             } elseif ($request->has('prev') && count($newPost[0])) {
                 $post = $newPost[0][0];
-                if(count($newPost[1][0]) < 1) $last = true; else $last = false;
+                if (count($newPost[1][0]) < 1) $last = true; else $last = false;
                 $picsPath = $this->getPic($post);
             } elseif (count($newPost[0]) == 0) {
                 $newPost[0] = posts::where('id', '=', $request->get('id'))->orderBy('id', 'asc')->take(1)->get()->toArray();
