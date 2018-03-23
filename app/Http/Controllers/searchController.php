@@ -35,6 +35,7 @@ class searchController extends Controller
      */
     public function store(Request $request)
     {
+        $notFound = '';
         if($request->has('searchFor')) {
             $posts = posts::where('title','like', '%'.$request->get('searchFor').'%')
                 ->orWhere('content','like', '%'.$request->get('searchFor').'%')
@@ -45,9 +46,11 @@ class searchController extends Controller
                     ->with('posts', $posts)->with('lastId', 0)
                     ->with('largest', $posts[0]['id'])->with('archiveCount', count($posts));
             }
+            $notFound = $request->get('searchFor');
         }
 
-        return redirect('/archives');
+        $homeController = new HomeController();
+        return $homeController->getArchives($request, $notFound);
     }
 
     /**

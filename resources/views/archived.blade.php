@@ -21,40 +21,46 @@ $rightArrow = $lastId;
             <div class="menuLinks"><a class="shownArrow" href="{{ URL::to('/biography') }}">Biography</a></div>
             @endrole
 
-        <div class="menuLinks"><a class="dropbtn" href="{{ URL::to('/') }}">&#8962;</a></div>
+            <div class="menuLinks"><a class="dropbtn" href="{{ URL::to('/') }}">&#8962;</a></div>
 
-        <div class="menuLinks"><a class="shownArrow" href="{{ URL::to('/donate') }}">Donate</a></div>
-        <div class="menuLinks">
-            <div class="dropdown">
-                <button class="dropbtn dropBtnPos">&#9776;</button>
-                <div class="dropdown-content">
-                    @role('admin','shop-keeper')
-                    <a href="{{ URL::to('/admin/logout') }}">Logout</a>
-                    @else
-                        <a href="{{ URL::to('/admin/login') }}">Login</a>
-                        @endrole
-                        <a href="{{ URL::to('/') }}/archives">Archives</a>
-                        <a href="{{ URL::to('/') }}/donate">Donate</a>
+            <div class="menuLinks"><a class="shownArrow" href="{{ URL::to('/donate') }}">Donate</a></div>
+            <div class="menuLinks">
+                <div class="dropdown">
+                    <button class="dropbtn dropBtnPos">&#9776;</button>
+                    <div class="dropdown-content">
+                        @role('admin','shop-keeper')
+                        <a href="{{ URL::to('/admin/logout') }}">Logout</a>
+                        @else
+                            <a href="{{ URL::to('/admin/login') }}">Login</a>
+                            @endrole
+                            <a href="{{ URL::to('/') }}/archives">Archives</a>
+                            <a href="{{ URL::to('/') }}/donate">Donate</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="item">
-            @if($rightArrow)
-                <a class="shownArrow" href="{{ URL::to('/') }}/archives?lastId={{ $rightArrow }}&dir=R">&#9654;</a>
-            @else
-                <a class="hiddenArrow" href="{{ URL::to('/') }}/archives?lastId={{ $rightArrow }}&dir=R">&#9654;</a>
-            @endif
-        </div>
+            <div class="item">
+                @if($rightArrow)
+                    <a class="shownArrow" href="{{ URL::to('/') }}/archives?lastId={{ $rightArrow }}&dir=R">&#9654;</a>
+                @else
+                    <a class="hiddenArrow" href="{{ URL::to('/') }}/archives?lastId={{ $rightArrow }}&dir=R">&#9654;</a>
+                @endif
+            </div>
     </div>
 @endsection
 
 @section('content')
+    <?php
+        if(isset($notFound)) $val = $notFound; else $val = '';
+    ?>
     <div class="searchBox">
         <form method="post" action="{{ URL::to('/search') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <input type="text" name="searchFor" placeholder="  Search by keyword">
+            <input type="text" name="searchFor" placeholder="  Search by keyword" value="{{ $val }}">
             <input type="submit" value="Search">
         </form>
+        @if(isset($notFound) && $notFound != '')
+            <span class="unFound">Keyword not found. Please try again.</span>
+        @endif
     </div>
     @foreach($posts as $post)
         <div class="archives">
@@ -69,7 +75,7 @@ $rightArrow = $lastId;
                 <?php
                 $words = explode(' ', $post['content']);
                 for ($i = 0; $i < count($words) && $i < 10; $i++) {
-                    echo $words[$i] . " ";
+                echo $words[$i] . " ";
                 }
                 ?>...
             </div>

@@ -98,7 +98,7 @@ class HomeController extends Controller
         return $pic;
     }
 
-    public function getArchives(Request $request)
+    public function getArchives(Request $request, $notFound = '')
     {
         $count = 50;
         if ($request->has('lastId')) {
@@ -120,7 +120,7 @@ class HomeController extends Controller
 
         return view('archived')
             ->with('posts', $posts)->with('lastId', $lastSearched)
-            ->with('largest', $largestId['id'])->with('archiveCount', $count);
+            ->with('largest', $largestId['id'])->with('archiveCount', $count)->with('notFound', $notFound);
 
     }
 
