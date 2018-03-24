@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $post = posts::orderBy('id', 'desc')->take(2)->get();
+        $post = posts::where('isPost','=','1')->orderBy('id', 'desc')->take(2)->get();
         if ($post != null) {
             $post = $post->toArray();
             if (count($post) > 1) $first = false; else $first = true;
@@ -57,22 +57,23 @@ class HomeController extends Controller
                 $nxt = '>=';
             }
 
-            $newPost[0] = posts::where('id', $prv, $request->get('id'))->orderBy('id', 'desc')->take(2)->get()->toArray();
+            $newPost[0] = posts::where('isPost','=','1')->where('id', $prv, $request->get('id'))->orderBy('id', 'desc')->take(2)->get()->toArray();
             if (count($newPost[0]) < 2) $first = true;
 
-            $newPost[1] = posts::where('id', $nxt, $request->get('id'))->orderBy('id', 'asc')->take(2)->get()->toArray();
+            $newPost[1] = posts::where('isPost','=','1')->where('id', $nxt, $request->get('id'))->orderBy('id', 'asc')->take(2)->get()->toArray();
+
             if (count($newPost[1]) < 2) $last = true;
 
             if ($request->has('next')) {
                 $post = $newPost[1][0];
-                if (count($newPost[0][0]) < 1) $first = true; else $first = false;
+                if (count($newPost[0]) < 1) $first = true; else $first = false;
                 $picsPath = $this->getPic($post);
             } elseif ($request->has('prev') && count($newPost[0])) {
                 $post = $newPost[0][0];
-                if (count($newPost[1][0]) < 1) $last = true; else $last = false;
+                if (count($newPost[1]) < 1) $last = true; else $last = false;
                 $picsPath = $this->getPic($post);
             } elseif (!($request->has('next') || $request->has('prev'))) {
-                $newPost[0] = posts::where('id', '=', $request->get('id'))->orderBy('id', 'asc')->take(1)->get()->toArray();
+                $newPost[0] = posts::where('isPost','=','1')->where('id', '=', $request->get('id'))->orderBy('id', 'asc')->take(1)->get()->toArray();
                 $post = $newPost[0][0];
                 $picsPath = $this->getPic($post);
             } else {
@@ -106,14 +107,14 @@ class HomeController extends Controller
         } else {
             $lastSearched = 0;
         }
-        $largestId = posts::orderBy('id', 'desc')->first();
+        $largestId = posts::where('isPost','=','1')->orderBy('id', 'desc')->first();
         if ($largestId != null) $largestId = $largestId->toArray();
 
         if ($request->has('dir') && $request->get('dir') == "R" && $largestId['id'] <= $lastSearched) {
             $lastSearched = $largestId['id'] - $count;
         }
 
-        $posts = posts::where('id', '>', $lastSearched)->take($count)->get();
+        $posts = posts::where('isPost','=','1')->where('id', '>', $lastSearched)->take($count)->get();
         if ($posts != null) $posts = $posts->toArray(); else $posts = [];
 
         $lastSearched = end($posts)['id'];
@@ -121,6 +122,31 @@ class HomeController extends Controller
         return view('archived')
             ->with('posts', $posts)->with('lastId', $lastSearched)
             ->with('largest', $largestId['id'])->with('archiveCount', $count)->with('notFound', $notFound);
+
+    }
+
+    public function getBio()
+    {
+        $post = posts::where('isPost','=','0')
+            ->leftJoin('pics', 'pics.id', '=', 'posts.pics')
+            ->orderBy('posts.id', 'desc')->first()->toArray();
+//        var_dump($post);
+
+        return view('homepage')
+            ->with('subtitle', $post['title'])->with('content', $post['content'])
+            ->with('pics', [$post['path']])->with('id', $post['id'])
+            ->with('last', true)->with('first', true);
+
+//        'id' => int 8
+//  'title' => string 'With a picture' (length=14)
+//  'isPost' => int 0
+//  'content' => string 'Newer bio' (length=9)
+//  'pics' => int 8
+//  'created_at' => string '2018-03-23 17:44:30' (length=19)
+//  'updated_at' => string '2018-03-23 17:44:30' (length=19)
+//  'deleted_at' => null
+//  'path' => string 'images/2018_03_23/images.jpeg' (length=29)
+
 
     }
 

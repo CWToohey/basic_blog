@@ -45,15 +45,14 @@ class adminController extends Controller
      */
     public function store(Request $request)
     {
-        $has = $request->hasFile('anImage') ? "image exists" : " no pic found";
-
-        if ($request->has('title')) {
+        if ($request->has('title') && $request->has('textContent') && $request->get('title') != '' && $request->get('textContent') != '') {
 
             $picsId = 0;
             $picsPath = $this->getPicsPath($request, $picsId);
             $posts = new posts();
             $posts->title = $request->get('title');
             $posts->content = $request->get('textContent');
+            if($request->has('isBio')) $posts->isPost = ($request->get('isBio')+1)%2;
             $posts->pics = $picsId;
             $posts->save();
 
@@ -62,7 +61,8 @@ class adminController extends Controller
                 ->with('last', true)->with('first', false);
         }
 
-        return view('home')->with('method', 'post')->with('posted', [])->with('extension', '');
+        $posted = ['title'=>$request->get('title'), 'content'=>$request->get('textContent'), 'isBio'=>$request->get('isBio')];
+        return view('home')->with('method', 'post')->with('posted', $posted)->with('extension', '')->with('missing','Please enter both title and text.');
     }
 
     /**
@@ -73,7 +73,7 @@ class adminController extends Controller
      */
     public function show($id)
     {
-        $post = posts::where('posts.id', '=', $id)->leftJoin('pics', function ($join) {
+        $post = posts::where('posts.id', '=', $id)->where('isPost','=','1')->leftJoin('pics', function ($join) {
             $join->on('pics.id', '=', 'posts.pics');
         })->get()->toArray();
         if (count($post) == 0) return redirect(URL::to('/'));
@@ -105,6 +105,7 @@ class adminController extends Controller
         $posts = posts::where('id', '=', $id)->first();
         $posts->title = $request->title;
         $posts->content = $request->textContent;
+        if($request->has('isBio')) $posts->isPost = ($request->get('isBio')+1)%2;
         $pics = $posts->pics;
         $picsPath = $this->getPicsPath($request, $pics);
         if(count($picsPath)) {

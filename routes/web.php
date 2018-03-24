@@ -19,8 +19,8 @@ Route::group(['prefix' => 'admin','namespace' => 'Auth'],function(){
     Route::get('logout', 'LoginController@logout');
 
 
-//    Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
-//    Route::post('register', 'RegisterController@register');
+    Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'RegisterController@register');
 
     // Password Reset Routes...
     Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.reset');
@@ -41,14 +41,17 @@ Route::get('/', 'HomeController@index');
 Route::get('/changePost', 'HomeController@nextPrev');
 Route::get('/archives', 'HomeController@getArchives');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/biography', 'HomeController@getBio');
 
-Route::get('/biography', function() {
-    return view('biography')
-        ->with('subtitle', 'Biosubtitle')->with('content','bioContent')
-        ->with('pics', '')->with('id', 0)
-        ->with('last', true)->with('first', true);
-
-});
+//Route::get('/biography', function() {
+//
+//
+//    return view('biography')
+//        ->with('subtitle', 'Biosubtitle')->with('content','bioContent')
+//        ->with('pics', '')->with('id', 0)
+//        ->with('last', true)->with('first', true);
+//
+//});
 
 Route::get('/s', function () {
     $text = file_get_contents("sample.txt");

@@ -336,6 +336,7 @@ class ComposerStaticInit0bc9d9dde0d1be12174b222416364958
         'App\\Http\\Controllers\\donorController' => __DIR__ . '/../..' . '/app/Http/Controllers/donorController.php',
         'App\\Http\\Controllers\\paymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/paymentController.php',
         'App\\Http\\Controllers\\paypalController' => __DIR__ . '/../..' . '/app/Http/Controllers/paypalController.php',
+        'App\\Http\\Controllers\\searchController' => __DIR__ . '/../..' . '/app/Http/Controllers/searchController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',

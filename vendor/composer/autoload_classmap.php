@@ -23,6 +23,7 @@ return array(
     'App\\Http\\Controllers\\donorController' => $baseDir . '/app/Http/Controllers/donorController.php',
     'App\\Http\\Controllers\\paymentController' => $baseDir . '/app/Http/Controllers/paymentController.php',
     'App\\Http\\Controllers\\paypalController' => $baseDir . '/app/Http/Controllers/paypalController.php',
+    'App\\Http\\Controllers\\searchController' => $baseDir . '/app/Http/Controllers/searchController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
     'App\\Http\\Middleware\\RedirectIfAuthenticated' => $baseDir . '/app/Http/Middleware/RedirectIfAuthenticated.php',

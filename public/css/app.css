@@ -84,21 +84,10 @@ h3 {
     margin-bottom: 30px;
 }
 
-.container {
-    min-width: 6in;
-    max-width: 6in;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
 .container2 {
     padding-top: 20px;
     width: 100%;
     border: 1px solid #FFF;
-}
-
-.article {
-    margin-top: 15px;
 }
 
 .buffered {
@@ -146,8 +135,12 @@ input[type=file] {
 }
 
 .myInputs input[type="text"]  {
+    padding: 0px 0px 0px 5px;
+    color: black;
+    font-weight: 700;
     width: 100%;
 }
+
 .InputLabel {
     margin: 0px 0px 0px 0px;
     padding: 0px;
@@ -243,11 +236,7 @@ input[type=submit]:hover {
     /*float: left;*/
     font-weight: bold;
 }
-.initialText {
-    /*float: left;*/
-    margin-left: 10px;
 
-}
 .clearFix {
     /*clear: both;*/
 }
@@ -256,10 +245,12 @@ input[type=submit]:hover {
     margin-top: 15px;
     text-align: center;
 }
+
 input[type=text] {
     width: 70%;
     border: 1px solid #888;
-    color: #888;
+    color: #000000;
+    font-weight: 700;
 }
 
 .menuLinks {
@@ -267,6 +258,9 @@ input[type=text] {
     font-weight: bold;
 }
 
+.hiddenArrow {
+    visibility: hidden;
+}
 a.hiddenArrow:link, a.hiddenArrow:visited, a.hiddenArrow:hover, a.hiddenArrow:active {
     text-decoration: none;
     color: #d0d0d0;
@@ -364,7 +358,6 @@ ul.popUpClass {
 
 .donate {
     width: 70%;
-
     margin: auto;
 }
 
@@ -461,4 +454,72 @@ a.dropbtn:hover {
 
 .bioHeader {
     font-weight: bold;
+}
+
+.unFound {
+    color: red;
+    font-weight: bold;
+}
+
+h4 {
+    font-weight: 700;
+    text-align: left;
+    margin: 10px 0px 0px 0px;
+}
+
+
+@media only screen and (min-width: 768px) {
+    .container {
+        min-width: 6in;
+        max-width: 6in;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .article {
+        margin-top: 15px;
+        color: #000000;
+        font-weight: 400;
+        font-family: Raleway;
+        font-size: large;
+        line-height: 120%;
+    }
+
+    .initialText {
+        /*float: left;*/
+        margin-left: 10px;
+        font-weight: 400;
+        font-family: Raleway;
+        line-height: 120%;
+    }
+
+}
+
+@media only screen and (max-width: 767px) {
+    .container {
+        min-width: 100%;
+        max-width: 100%;
+        font-size: small;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .article {
+        margin-top: 15px;
+        color: #000000;
+        font-weight: 500;
+        font-family: Raleway;
+        line-height: 120%;
+    }
+
+    .initialText {
+        /*float: left;*/
+        color: #000000;
+        margin-left: 10px;
+        font-weight: 500;
+        font-family: Raleway;
+        line-height: 120%;
+
+    }
+
 }
