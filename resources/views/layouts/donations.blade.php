@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ getenv('BLOG_TITLE') }}</title>
+    <?php
+    $heading = \App\headings::where('key', '=', 'PageHeading')->first();
+    $subHead = \App\headings::where('key', '=', 'PageSubHead')->first();
+    ?>
+    <title>{{ $heading->content }}</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -26,12 +30,15 @@
 </div>
 <div class="container container2">
     <div class="buffered">
-        <h1>{{ getenv('BLOG_TITLE') }}</h1>
-        <h3>{{ getenv('BLOG_SUBHEAD') }}</h3>
+        <h1>{{ $heading->content }}</h1>
+        <h3>{{ $subHead->content }}</h3>
         @yield('content')
     </div>
     <div class="article">
-        <h3><a class="shownArrow" href="{{ URL::to('/') }}/donate">Donate!</a> | <a class="shownArrow" href="{{ URL::to('/') }}/archives">Archives</a></h3>
+        <h3><a class="shownArrow" href="{{ URL::to('/') }}">Home</a> |
+            <a class="shownArrow"
+               href="{{ URL::to('/') }}/archives">Archives</a>
+        </h3>
     </div>
 </div>
 </body>

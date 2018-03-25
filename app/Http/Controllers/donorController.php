@@ -54,12 +54,10 @@ class donorController extends Controller
             }
 
             $subject = 'Donations from '.$starting.' to '.$ending;
-            Mail::send('sendDonors', ['donors' => $donations], function ($message) use ($subject, $donations) {
-                $message->from('noreply@noreply.net', '');
-                $message->to('christoohey@me.com', '');
-//                        $message->to('christoohey@me.com', '');
-                $message->subject($subject);
-            });
+//            Mail::send('sendDonors', ['donors' => $donations], function ($message) use ($subject, $donations) {
+//                $message->from('noreply@noreply.net', '');
+//                $message->subject($subject);
+//            });
 
         }
 

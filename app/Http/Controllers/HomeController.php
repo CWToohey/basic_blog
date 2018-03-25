@@ -49,9 +49,13 @@ class HomeController extends Controller
         if ($request->has('id')) {
             $last = $first = false;
 
+
             $nxt = '>';
             $prv = '<';
-            if ($request->has('next')) {
+            if(!($request->has('prev') || $request->has('next'))) {
+                $prv = '<=';
+                $nxt = '>=';
+            } elseif ($request->has('next')) {
                 $prv = '<=';
             } elseif ($request->has('prev')) {
                 $nxt = '>=';
@@ -63,6 +67,22 @@ class HomeController extends Controller
             $newPost[1] = posts::where('isPost','=','1')->where('id', $nxt, $request->get('id'))->orderBy('id', 'asc')->take(2)->get()->toArray();
 
             if (count($newPost[1]) < 2) $last = true;
+
+            if(!($request->has('prev') || $request->has('next'))) {
+                $post = posts::where('id','=', $request->get('id'))->first();
+                if($post) {
+                    $picsPath = $this->getPic($post);
+                    if(!$post['isPost']) {
+                        $first = true;
+                        $last = true;
+                    }
+                    return view('homepage')
+                        ->with('subtitle', $post['title'])->with('content', $post['content'])
+                        ->with('pics', $picsPath)->with('id', $post['id'])
+                        ->with('last', $last)->with('first', $first);
+                }
+            }
+
 
             if ($request->has('next')) {
                 $post = $newPost[1][0];
@@ -114,10 +134,15 @@ class HomeController extends Controller
             $lastSearched = $largestId['id'] - $count;
         }
 
-        $posts = posts::where('isPost','=','1')->where('id', '>', $lastSearched)->take($count)->get();
+        $posts = posts::where('isPost','=','1')->where('id', '>', $lastSearched)->orderBy('id','desc')->take($count)->get();
         if ($posts != null) $posts = $posts->toArray(); else $posts = [];
 
         $lastSearched = end($posts)['id'];
+
+        $archived = posts::where('isPost','=','0')->orderBy('id','desc')->take(1)->get();
+        if($archived != null) $archived = $archived->toArray();
+
+        $posts = array_merge($archived, $posts);
 
         return view('archived')
             ->with('posts', $posts)->with('lastId', $lastSearched)

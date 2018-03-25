@@ -25,12 +25,13 @@
             </form>
         </div>
     </div>
-    @if(isset($donors))
-        {{ $donors }} have been sent to you.
-        <?php
-        var_dump($test);
-        ?>
-    @endif
-
-
+    <div class="initialText">
+        @if(isset($donors) && $donors > 1)
+            If live, information about {{ $donors }} donors would have been sent to you.
+        @elseif(isset($donors) && $donors == 1)
+            If live, information about a donor would have been sent to you.
+        @elseif(isset($donors))
+            No donors were found in that time period.
+        @endif
+    </div>
 @endsection

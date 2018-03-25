@@ -8,7 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'sks') }}</title>
+    <?php
+    $heading = \App\headings::where('key', '=', 'PageHeading')->first();
+    ?>
+    <title>{{ $heading->content }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -29,7 +32,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        ADD | EDIT POST
                     </a>
                 </div>
 
@@ -70,7 +73,6 @@
                 </div>
             </div>
         </nav>
-
         @yield('content')
     </div>
 

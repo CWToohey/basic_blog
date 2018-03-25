@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <div class="donate">
+            <h4>We appreciate your donation.</h4>
             <form action="{{ URL::to('donate') }}{{ $extension ?? '' }}" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input name="_method" type="hidden" value="{{ $method }}">

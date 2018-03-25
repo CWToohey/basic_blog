@@ -7,7 +7,11 @@
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:500" rel="stylesheet">
 
-    <title>{{ getenv('BLOG_TITLE') }}</title>
+    <?php
+    $heading = \App\headings::where('key', '=', 'PageHeading')->first();
+    $subHead = \App\headings::where('key', '=', 'PageSubHead')->first();
+    ?>
+    <title>{{ $heading->content }}</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -28,7 +32,7 @@
             @role('admin')
             <div class="menuLinks"><a class="shownArrow" href="{{ URL::to('/addPost') }}">Add Post</a></div>
             @else
-                <div class="menuLinks"><a class="shownArrow" href="{{ URL::to('/biography') }}">Biography</a></div>
+                <div class="menuLinks"><a class="shownArrow" href="{{ URL::to('/biography') }}">About</a></div>
                 @endrole
 
                 <div class="menuLinks">
@@ -66,9 +70,8 @@
 </div>
 <div class="container container2">
     <div class="buffered">
-        <h1>{{ getenv('BLOG_TITLE') }}</h1>
-
-        <h3>{{ getenv('BLOG_SUBHEAD') }}</h3>
+        <h1>{{ $heading->content }}</h1>
+        <h3>{{ $subHead->content }}</h3>
         @yield('content')
     </div>
     <div class="article">

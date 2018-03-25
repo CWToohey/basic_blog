@@ -20,7 +20,7 @@
             </div>
 
             <div id="paypal-button-container"></div>
-            You can use a credit card through Paypal.
+            <span class="payPalMessage">You can use a credit card through Paypal.</span>
         </div>
     </div>
     <script>

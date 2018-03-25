@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\URL;
 use Illuminate\Http\Request;
+use Auth;
 use App\pics;
 use App\posts;
 
@@ -73,7 +74,12 @@ class adminController extends Controller
      */
     public function show($id)
     {
-        $post = posts::where('posts.id', '=', $id)->where('isPost','=','1')->leftJoin('pics', function ($join) {
+        $user = Auth::user();
+        if($user->hasRole('admin')) {
+            $checkPost = '<=';
+        } else $checkPost = '=';
+
+        $post = posts::where('posts.id', '=', $id)->where('isPost',$checkPost,'1')->leftJoin('pics', function ($join) {
             $join->on('pics.id', '=', 'posts.pics');
         })->get()->toArray();
         if (count($post) == 0) return redirect(URL::to('/'));

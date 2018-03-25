@@ -7,7 +7,7 @@ $rightArrow = $lastId;
 
 @section('content')
     <?php
-        if(isset($notFound)) $val = $notFound; else $val = '';
+    if (isset($notFound)) $val = $notFound; else $val = '';
     ?>
     <div class="searchBox">
         <form method="post" action="{{ URL::to('/search') }}">
@@ -22,18 +22,20 @@ $rightArrow = $lastId;
     @foreach($posts as $post)
         <div class="archives">
             <div class="titleLink">
-                <a class="shownArrow" href="./changePost?id={{ $post['id'] }}">{{ $post['title'] }} &#9679;
+                <a class="shownArrow" href="./changePost?id={{ $post['id'] }}">{{ $post['title'] }}
                     <?php
-                    $created = date('Y-m-d', strtotime($post['created_at']));
+                    $created = $post['isPost'] ? "&#9679; " . date('Y-m-d', strtotime($post['created_at'])) : '';
                     ?>
                     {{ $created }}</a>
             </div>
             <div class="initialText">
                 <?php
+                $output = '';
                 $words = explode(' ', $post['content']);
                 for ($i = 0; $i < count($words) && $i < 15; $i++) {
-                echo $words[$i] . " ";
+                    $output .= $words[$i] . " ";
                 }
+                echo substr($output, 0, -1);
                 ?>...
             </div>
             <div class="clearFix"></div>
