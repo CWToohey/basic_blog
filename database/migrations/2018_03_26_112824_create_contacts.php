@@ -4,20 +4,23 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHeadings extends Migration
+class CreateContacts extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
+
     public function up()
     {
-        Schema::create('headings', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
+            $fields = ['FullName','email','phone','address'];
             $table->increments('id');
-            $table->string('key', 255)->unique();
-            $table->string('label', 255)->unique();
-            $table->mediumText('content');
+            foreach ($fields as $field) {
+                $table->string($field, 255);
+            }
+            $table->string('message', 2048);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +33,7 @@ class CreateHeadings extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('headings');
+        Schema::dropIfExists('contacts');
     }
+
 }

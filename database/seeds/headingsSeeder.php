@@ -15,10 +15,12 @@ class headingsSeeder extends Seeder
         $values = [
             [
                 'key' => 'PageHeading',
+                'label'=>'Page Title',
                 'content' => "Candidate's Blog",
             ],
             [
                 'key' => 'PageSubHead',
+                'label'=>'Page Subtitle',
                 'content' => "Running for Office",
             ]
         ];

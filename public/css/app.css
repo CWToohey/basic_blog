@@ -491,6 +491,16 @@ h4 {
     color: #ff0000;
 }
 
+.captcha {
+    margin-left: 5px;
+    color: black;
+    font-weight: 500;
+}
+
+input.captcha {
+    width: 100px;
+}
+
 @media only screen and (min-width: 768px) {
     .container {
         min-width: 6in;
@@ -549,3 +559,4 @@ h4 {
     }
 
 }
+

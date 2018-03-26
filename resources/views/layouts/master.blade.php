@@ -40,11 +40,13 @@
                         <button class="dropbtn dropBtnPos">&#9776;</button>
                         <div class="dropdown-content">
                             <a href="{{ URL::to('/') }}">Home</a>
-                            <a href="{{ URL::to('/') }}/donate">Donate</a>
                             <a href="{{ URL::to('/') }}/archives">Archives</a>
                             @role('admin','shop-keeper')
+                            <a href="{{ URL::to('/editTitles') }}">Edit Web Titles</a>
                             <a href="{{ URL::to('/admin/logout') }}">Logout</a>
                             @else
+                                <a href="{{ URL::to('/') }}/donate">Donate</a>
+                                <a href="{{ URL::to('/contact') }}">Contact</a>
                                 <a href="{{ URL::to('/admin/login') }}">Login</a>
                                 {{--<a href="{{ URL::to('/admin/register') }}">Register</a>--}}
                                 @endrole
@@ -56,8 +58,6 @@
                 @else
                     <div class="menuLinks"><a class="shownArrow" href="{{ URL::to('/donate') }}">Donate</a></div>
                     @endrole
-
-
 
                     @if(isset($last) && !$last)
                         <div class="item"><a class="shownArrow" href="./changePost?id={{ $id }}&next=Next">&#9654;</a>
@@ -71,6 +71,7 @@
 <div class="container container2">
     <div class="buffered">
         <h1>{{ $heading->content }}</h1>
+
         <h3>{{ $subHead->content }}</h3>
         @yield('content')
     </div>

@@ -31,11 +31,13 @@ Route::group(['prefix' => 'admin','namespace' => 'Auth'],function(){
 
 Route::group(['prefix' => '/','middleware' => ['role:admin']],function() {
     Route::resource('addPost','adminController');
+    Route::resource('editTitles','headingsController');
     Route::resource('edit','adminController');
     Route::resource('findDonations', 'donorController');
 });
 
 Route::resource('search', 'searchController');
+Route::resource('contact', 'contactController');
 
 Route::get('/', 'HomeController@index');
 Route::get('/changePost', 'HomeController@nextPrev');
