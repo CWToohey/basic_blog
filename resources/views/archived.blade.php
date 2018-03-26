@@ -22,11 +22,10 @@ $rightArrow = $lastId;
     @foreach($posts as $post)
         <div class="archives">
             <div class="titleLink">
-                <a class="shownArrow" href="./changePost?id={{ $post['id'] }}">{{ $post['title'] }}
-                    <?php
-                    $created = $post['isPost'] ? "&#9679; " . date('Y-m-d', strtotime($post['created_at'])) : '';
-                    ?>
-                    {{ $created }}</a>
+                <?php
+                $created = $post['isPost'] ?  date('F j, Y', strtotime($post['created_at'])). " &#9679; " : '';
+                ?>
+                <a class="shownArrow" href="./changePost?id={{ $post['id'] }}">{{ $created }}{{ $post['title'] }}</a>
             </div>
             <div class="initialText">
                 <?php

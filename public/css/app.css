@@ -234,7 +234,7 @@ input[type=submit]:hover {
 
 .titleLink {
     /*float: left;*/
-    line-height: 100%;
+    line-height: 110%;
     font-weight: bold;
     font-size: large;
     margin-bottom: 5px;
@@ -449,11 +449,18 @@ a.dropbtn {
 }
 
 .payPalMessage {
+    margin-top: 10px;
     color: orange;
     font-weight: bold;
 }
 
 .donate2 {
+    margin-bottom: 10px;
+    font-family: helvetica, georgia, serif;
+    font-weight: 500;
+}
+
+.donation {
     font-weight: bold;
 }
 
@@ -470,6 +477,18 @@ h4 {
     font-weight: 700;
     text-align: left;
     margin: 10px 0px 0px 0px;
+}
+
+.donorGood {
+    text-align: center;
+    font-weight: bold;
+    color: black;
+}
+
+.donorError {
+    text-align: center;
+    font-weight: bold;
+    color: #ff0000;
 }
 
 @media only screen and (min-width: 768px) {
@@ -491,7 +510,7 @@ h4 {
 
     .initialText {
         /*float: left;*/
-        margin-left: 20px;
+        margin-left: 25px;
         margin-bottom: 20px;
         font-weight: 400;
         font-size: large;
@@ -513,6 +532,7 @@ h4 {
     .article {
         margin-top: 15px;
         color: #000000;
+        font-size: larger;
         font-weight: 500;
         font-family: Raleway;
         line-height: 120%;

@@ -27,11 +27,11 @@
     </div>
     <div class="initialText">
         @if(isset($donors) && $donors > 1)
-            If live, information about {{ $donors }} donors would have been sent to you.
+            <div class="donorGood">If live, information about {{ $donors }} donors would have been sent to you.</div>
         @elseif(isset($donors) && $donors == 1)
-            If live, information about a donor would have been sent to you.
+            <div class="donorGood">If live, information about a donor would have been sent to you.</div>
         @elseif(isset($donors))
-            No donors were found in that time period.
+            <div class="donorError">No donors were found in that time period.</div>
         @endif
     </div>
 @endsection

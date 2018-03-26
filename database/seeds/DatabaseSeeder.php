@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
-use App\role_user;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,6 +16,10 @@ class DatabaseSeeder extends Seeder
         $permissions->run();
         $roles = new RolesTableSeeder();
         $roles->run();
+        $headings = new headingsSeeder();
+        $headings->run();
+        $posts = new postsSeeder();
+        $posts->run();
 
         $user = [
             [

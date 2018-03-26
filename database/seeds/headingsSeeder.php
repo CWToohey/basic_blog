@@ -15,7 +15,7 @@ class headingsSeeder extends Seeder
         $values = [
             [
                 'key' => 'PageHeading',
-                'content' => "A Candidate's blog",
+                'content' => "Candidate's Blog",
             ],
             [
                 'key' => 'PageSubHead',

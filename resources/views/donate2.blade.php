@@ -11,16 +11,16 @@
                     $amount = money_format('%i', $data->amount);
                 }
                 ?>
-                Amount: $ {{ $amount ?? '' }}<br>
-                Name: {{ $data->fullName ?? '' }}<br>
-                Email: {{ $data->email ?? '' }}<br>
-                Address: {{ $data->address ?? '' }}<br>
-                Occupation: {{ $data->occupation ?? '' }}<br>
-                Employer: {{ $data->employer ?? '' }}<br>
+                <span class="donation">Amount: </span>$ {{ $amount ?? '' }}<br>
+                    <span class="donation">Name:</span> {{ $data->fullName ?? '' }}<br>
+                    <span class="donation">Email:</span> {{ $data->email ?? '' }}<br>
+                    <span class="donation">Address:</span> {{ $data->address ?? '' }}<br>
+                    <span class="donation">Occupation:</span> {{ $data->occupation ?? '' }}<br>
+                    <span class="donation">Employer:</span> {{ $data->employer ?? '' }}<br>
             </div>
 
             <div id="paypal-button-container"></div>
-            <span class="payPalMessage">You can use a credit card through Paypal.</span>
+            <div class="payPalMessage">You can use a credit card through Paypal.</div>
         </div>
     </div>
     <script>
