@@ -42,7 +42,7 @@ Bring a lunch, some folding chairs, fishing poles, and any extra sardines you ma
                 'path' => "images/samples/bridge.JPG",
             ],
             [
-                'title' => "Barking Out Windows: The Search For A Traffic Solution",
+                'title' => "Barking Out Windows: The Search For A Fair Traffic Solution",
                 'isPost' => 1,
                 'content' => "Homeowners, local businesses, and commuters have been complaining for years about the increased traffic congestion on Main Street during rush hour. As our population increases and more residents commute into Bigger City for work and recreation, local roadways (and nerves) have become stressed. We need to find a solution that's fair to all residents, while maintaining the quiet charm of our Historic Downtown.
 

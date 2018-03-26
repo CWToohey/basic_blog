@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix' => 'admin','namespace' => 'Auth'],function(){
+Route::group(['prefix' => 'admin', 'namespace' => 'Auth'], function () {
     // Authentication Routes...
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login');
@@ -26,13 +26,14 @@ Route::group(['prefix' => 'admin','namespace' => 'Auth'],function(){
     Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.reset');
     Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
     Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset.token');
-    Route::post('password/reset', 'ResetPasswordController@reset');
 });
+Route::post('password.reset', 'Auth\ResetPasswordController@reset')->name('password.request');
+//Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.reset');
 
-Route::group(['prefix' => '/','middleware' => ['role:admin']],function() {
-    Route::resource('addPost','adminController');
-    Route::resource('editTitles','headingsController');
-    Route::resource('edit','adminController');
+Route::group(['prefix' => '/', 'middleware' => ['role:admin']], function () {
+    Route::resource('addPost', 'adminController');
+    Route::resource('editTitles', 'headingsController');
+    Route::resource('edit', 'adminController');
     Route::resource('findDonations', 'donorController');
 });
 
@@ -45,29 +46,4 @@ Route::get('/archives', 'HomeController@getArchives');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/biography', 'HomeController@getBio');
 
-//Route::get('/biography', function() {
-//
-//
-//    return view('biography')
-//        ->with('subtitle', 'Biosubtitle')->with('content','bioContent')
-//        ->with('pics', '')->with('id', 0)
-//        ->with('last', true)->with('first', true);
-//
-//});
-
-Route::get('/s', function () {
-    $text = file_get_contents("sample.txt");
-    return view('homepage')->with('subtitle','SubTitle')
-        ->with('content', $text)->with('pics', ['images/IMG_3167.JPG'])
-        ->with('first',1)->with('last',1);
-});
-
-Route::get('/test', function () {
-    return view('welcome');
-});
-
-Route::resource('/donate','donateController');
-
-Route::get('/ajx', function() {
-    return view('ajax');
-});
+Route::resource('/donate', 'donateController');

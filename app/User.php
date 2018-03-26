@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use AdminResetPassword as ResetPasswordNotification;
+use App\Notifications\AdminResetPassword as ResetPasswordNotification;
 
 class User extends Authenticatable
 {

@@ -16,7 +16,7 @@ class headingsSeeder extends Seeder
             [
                 'key' => 'PageHeading',
                 'label'=>'Page Title',
-                'content' => "Candidate's Blog",
+                'content' => "Candidate Blog",
             ],
             [
                 'key' => 'PageSubHead',
