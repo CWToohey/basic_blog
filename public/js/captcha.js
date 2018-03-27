@@ -45,7 +45,6 @@ function allFields() {
         result = false;
     } else {
         document.getElementById("emailErr").innerHTML = '';
-
     }
     return result;
 }

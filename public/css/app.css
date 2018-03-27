@@ -115,9 +115,9 @@ h3 {
 textarea#textContent {
     width: 100%;
     height: 200px;
-    border: 1px solid #cccccc;
+    border: 1px solid black;
     padding: 3px;
-    font-family: Tahoma, sans-serif;
+    font-family: Raleway, sans-serif;
 }
 
 input[type=file] {
@@ -128,11 +128,18 @@ input[type=file] {
     padding: 5px;
 }
 
-.myInputs {
-    margin: 0px 0px 0px 0px;
-    font-weight: bold;
-    /*background: red;*/
+#about {
+    margin-top: 5px;
 }
+.myInputs {
+    font-size: 13px;
+    margin: 5px 0px 0px 0px;
+    font-weight: bold;
+    border-radius: 5px;
+    color: #777777;
+    padding: 5px;
+}
+
 
 .myInputs input[type="text"]  {
     padding: 0px 0px 0px 5px;
@@ -203,13 +210,20 @@ input[type=submit]:hover {
     background: #ffffff;
 }
 
-.myInputs {
-    font-size: 15px;
-    margin-top: 5px;
+.smallInputs {
+    font-size: 13px;
+    margin-top: 0px;
     font-weight: bold;
     border-radius: 5px;
     color: black;
     padding: 5px;
+}
+
+.myInputs h4 {
+    text-align: center;
+    font-size: 150%;
+    color: gray;
+    margin-bottom: 10px;
 }
 
 .editButton {
@@ -384,6 +398,12 @@ input.amount {
     width: 30%;
 }
 
+input.titleText {
+    border: solid 1px black;
+    padding: 3px;
+    width: 100%;
+}
+
 #thankYou {
     font-size: 2em;
     font-weight: bold;
@@ -502,6 +522,10 @@ h4 {
 
 input.captcha {
     width: 100px;
+}
+
+.noBreak {
+    display: inline;
 }
 
 @media only screen and (min-width: 768px) {

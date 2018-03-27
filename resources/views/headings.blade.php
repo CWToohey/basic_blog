@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <form id="contactForm" action="{{ URL::to('editTitles') }}" method="post">
+    <form class="noBreak" id="contactForm" action="{{ URL::to('editTitles') }}" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input name="_method" type="hidden" value="POST">
         @foreach($headings as $heading)
@@ -14,4 +14,5 @@
         @endforeach
         <input type="submit" value="Submit">
     </form>
+    <button class="editButton" onclick="window.location.href='{{ URL::to('/') }}/'">Home</button>
 @endsection
