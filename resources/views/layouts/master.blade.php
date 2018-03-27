@@ -40,7 +40,8 @@
                         <button class="dropbtn dropBtnPos">&#9776;</button>
                         <div class="dropdown-content">
                             <a href="{{ URL::to('/') }}">Home</a>
-                            <a href="{{ URL::to('/') }}/archives">Archives</a>
+                            <a href="{{ URL::to('/archives') }}">Archives</a>
+                            <a href="{{ URL::to('/biography') }}">About</a>
                             @role('admin','shop-keeper')
                             <a href="{{ URL::to('/editTitles') }}">Edit Web Titles</a>
                             <a href="{{ URL::to('/admin/logout') }}">Logout</a>

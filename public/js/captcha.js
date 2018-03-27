@@ -1,5 +1,5 @@
 var capture = {
-    operation: ['plus','times'],
+    operation: ['plus', 'times'],
     op: 0,
     num1: 0,
     num2: 0,
@@ -19,9 +19,9 @@ function setCaptcha(cap) {
 setCaptcha(capture);
 
 function getCaptcha() {
-    if(capture.result == document.getElementById('captchaResponse').value) {
+    if (capture.result == document.getElementById('captchaResponse').value) {
         document.getElementById('fixCaptcha').innerHTML = '';
-        if(allFields() != false) {
+        if (allFields() != false) {
             document.getElementById("contactForm").submit();
         }
     }
@@ -31,14 +31,26 @@ function getCaptcha() {
 }
 
 function allFields() {
-    var fields = ['FullName','email','phone','address','address','message'];
+    var fields = ['FullName', 'phone', 'address', 'address', 'message'];
     var result = true;
-    for(var i in fields)
-        if(document.getElementById(fields[i]).value == ''){
-            document.getElementById(fields[i]+"Err").innerHTML = 'Please enter a value';
+    for (var i in fields)
+        if (document.getElementById(fields[i]).value == '') {
+            document.getElementById(fields[i] + "Err").innerHTML = 'Please enter a value.';
             result = false;
         } else {
-            document.getElementById(fields[i]+"Err").innerHTML = '';
+            document.getElementById(fields[i] + "Err").innerHTML = '';
         }
+    if (document.getElementById('email').value == '' || !validateEmail(document.getElementById('email').value)) {
+        document.getElementById("emailErr").innerHTML = 'Please enter a valid email address.';
+        result = false;
+    } else {
+        document.getElementById("emailErr").innerHTML = '';
+
+    }
     return result;
+}
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
 }

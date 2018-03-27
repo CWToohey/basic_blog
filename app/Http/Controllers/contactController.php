@@ -39,27 +39,39 @@ class contactController extends Controller
     public function store(Request $request)
     {
         $good = true;
-        $fields = ['FullName','email','phone','address','message'];
+        $fields = ['FullName', 'email', 'phone', 'address', 'message'];
         $message = [];
 
-        foreach($fields as $key) {
-            if($request->has($key)) {
+        foreach ($fields as $key) {
+            if ($request->has($key)) {
                 $message[$key] = $request->get($key);
             } else {
+                $message[$key] = '';
                 $good = false;
                 break;
             }
         }
 
-        if($good) {
+        if (filter_var($message['email'], FILTER_VALIDATE_EMAIL) === false) {
+            $good = false;
+            $message['email_err'] = "Please enter a valid email address.";
+        }
+
+        if ($good) {
             $contact = new contacts();
             foreach ($message as $key => $value) {
                 $contact->$key = $value;
             }
             $contact->save();
             // send email.
+        } else {
+
+            return view('contact')
+                ->with('posted', $message)
+                ->with('first', true)
+                ->with('last', true);
         }
-        return view('contactThankyou')->with('first', true)->with('last',true);
+        return view('contactThankyou')->with('first', true)->with('last', true);
     }
 
     /**

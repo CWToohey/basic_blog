@@ -15,7 +15,7 @@
                 </div>
                 @if(isset($missing))
                     <div class="myInputs">
-                        <span class="errors">{{ $missing }}</span>
+                        <span class="donorError">{{ $missing }}</span>
                     </div>
                 @endif
                 <form action="{{ URL::to('addPost') }}{{ $extension }}" method="post" enctype="multipart/form-data">
