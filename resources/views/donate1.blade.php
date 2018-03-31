@@ -58,4 +58,5 @@
             <input type="submit" value="Proceed to Checkout">
         </form>
     </div>
+    <div id="PapPalTestMode" class="unFound">Note: PayPal payments are currently in test mode and will only work with test accounts. Please contact the candidate to make a donation.</div>
 @endsection

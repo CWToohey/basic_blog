@@ -1,7 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
-    <script src="{{ URL::to('/js') }}/sure.js"></script>
+    <script>
+        function areYouSure() {
+            var certain = prompt("Are you sure?", "N/Y");
+            if(certain == null) return false;
+            certain = certain.toUpperCase();
+            return certain[0] == "Y";
+        }
+    </script>
     <?php
 
     $content = nl2br($content);

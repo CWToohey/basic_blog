@@ -21,6 +21,7 @@
         <div id="paypal-button-container"></div>
         <div class="payPalMessage">You can use a credit card through Paypal.</div>
     </div>
+    <div id="PapPalTestMode" class="unFound">Note: PayPal payments are currently in test mode and will only work with test accounts. Please contact the candidate to make a donation.</div>
     <script>
         var paymentInfo = JSON.parse('<?php echo json_encode($data); ?>');
         var postUrl = "{{ URL::to('/donate') }}";

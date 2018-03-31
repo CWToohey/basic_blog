@@ -63,7 +63,7 @@ While watching volunteers from Our Town High School erect birdhouses for our del
 Is this idea wise like an owl? Or crazy as a cuckoo? Let me know. I’ll be hosting a meet-greet-and-pet potluck at the Town Library on April 1 at 8:00 p.m. Please contact Head Librarian Rita Book if you plan on attending. Last-minute drop-ins are welcome.
 
 Stop by. Bring a treat. Don’t forget the tuna fish and catnip.",
-                'created_at' => "2017-03-26 15:26:19",
+                'created_at' => "2017-03-28 15:26:19",
                 'updated_at' => "2018-03-25 19:15:24",
                 'path' => "images/samples/birdhouse.JPG"
             ]

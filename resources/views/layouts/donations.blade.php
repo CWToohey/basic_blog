@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="political donation donate fund raise">
 
     <?php
     $heading = \App\headings::where('key', '=', 'PageHeading')->first();
@@ -19,7 +20,6 @@
 
     <!--Scripts -->
     <script   src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
-    <script src="{{ URL::to('/js/menu.js') }}"></script>
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
     <script src="{{ URL::to('/js/donations.js') }}"></script>

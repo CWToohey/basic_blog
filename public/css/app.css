@@ -1,7 +1,3 @@
-.tst {
-    color:green;
-}
-
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -95,8 +91,17 @@ h3 {
 }
 
 .evenly {
-    display:flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center; /* Safari 6.1+ */
     justify-content:space-between;
+}
+
+.box {
+    display: block;
+    float: left;
 }
 
 .evenly div {
@@ -106,7 +111,7 @@ h3 {
 #top {
     position: fixed;
     width: 100%;
-    height: 40px;
+    height: 42px;
     background: #ffffff;
     box-shadow: 0px 1px 4px 0px #ccc;
     z-index: 100;
@@ -188,7 +193,6 @@ input[type=file] {
 }
 
 .item {
-    background: #ffffff;
     height: 30px;
     padding: 5px;
 }
@@ -196,8 +200,8 @@ input[type=file] {
 input[type=submit] {
     font-size: 15px;
     margin-top: 10px;
-    background: #DDDDDD;
-    border: 1px solid #DDDDDD;
+    background: #f1f1f1;
+    border: none;
     font-weight: bold;
     border-radius: 5px;
     color: black;
@@ -205,9 +209,9 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    color: #04BFCC;
-    border: 1px solid #DDDDDD;
-    background: #ffffff;
+    color: #ffffff;
+    border: none;
+    background: #5CC5CC;
 }
 
 .smallInputs {
@@ -229,17 +233,19 @@ input[type=submit]:hover {
 .editButton {
     font-size: 15px;
     margin-top: 10px;
-    background: #DDDDDD;
-    border: 1px solid #DDDDDD;
+    background: #f1f1f1;
+    border: none;
+    /*border: 1px solid #DDDDDD;*/
     font-weight: bold;
     border-radius: 5px;
     color: black;
     padding: 5px;
 }
 .editButton:hover {
-    color: #04BFCC;
-    border: 1px solid #DDDDDD;
-    background: #ffffff;
+    color: #ffffff;
+    border: none;
+    /*border: 1px solid #DDDDDD;*/
+    background: #5CC5CC;
 }
 
 .archives {
@@ -273,6 +279,7 @@ input[type=text] {
 .menuLinks {
     font-size: 1.5em;
     font-weight: bold;
+    line-height: 110%;
 }
 
 .hiddenArrow {
@@ -292,13 +299,12 @@ a.shownArrow:link, a.shownArrow:visited, a.shownArrow:active {
     text-decoration: none;
 }
 
-a.shownArrow:hover{
-    color: #04BFCC;
+a.shownArrowLarger {
+    font-size: 2em;
 }
 
-a.shownArrowLarger {
-    top: 0px;
-    font-size: 2em;
+a.shownArrow:hover{
+    color: #04BFCC;
 }
 
 .picsElement {
@@ -413,8 +419,9 @@ input.titleText {
 }
 
 .dropbtn {
-    font-size: 14px;
+    font-size: 1.2em;
     /*border: none;*/
+    line-height: 105%;
     border: 1px solid #CCCCCC;
     background: #f1f1f1;
 
@@ -422,16 +429,15 @@ input.titleText {
 
 .dropBtnPos {
     position: relative;
-    top: -5px;
+    top: -3px;
 }
 
 
 a.dropbtn {
     text-decoration: none;
-    font-size: 30px;
+    font-size: 1.5em;
     color: #999999;
     line-height: 20px;
-
 }
 
 .dropdown {
@@ -448,9 +454,9 @@ a.dropbtn {
     z-index: 1;
 }
 
-.dropdown-content a {
+.menuLinks a {
     color: black;
-    padding: 12px 16px;
+    padding: 10px 10px;
     text-decoration: none;
     display: block;
 }
@@ -528,6 +534,90 @@ input.captcha {
     display: inline;
 }
 
+.navLeft {
+    float: left;
+    width: 15%;
+    background: transparent;
+}
+.navMiddle {
+    float: left;
+    margin: 0px 20% 0px 20%;
+    width: 30%;
+
+    text-align: center;
+    background: transparent;
+}
+.navRight {
+    float: right;
+    text-align: right;
+    width: 15%;
+    background: transparent;
+}
+
+#nav {
+    list-style:none;
+    margin:0;
+    padding:0;
+    text-align:center;
+    width: 100%;
+}
+
+#nav li{
+    position:relative;
+    display:inline;
+}
+#nav a{
+    display:inline-block;
+    padding: 5px;
+    font-size: 1.2em;
+    text-decoration: none;
+    width: 100%;
+    background: #f1f1f1;
+    border: 1px solid #f1f1f1;
+}
+#nav ul{
+    position:absolute;
+    left:-9999px;
+    margin:0;
+    padding:0;
+    text-align:center;
+    background:#f1f1f1;
+    width: 100%;
+}
+#nav ul li{
+    display:block;
+}
+#nav li:hover ul{
+    left:0;
+}
+#nav li:hover a{
+    /*background: #f1f1f1;*/
+    background: #ffffff;
+
+}
+#nav li:hover ul a{
+    text-decoration:none;
+    background:none;
+}
+#nav li:hover ul a:hover{
+    /*background:#f1f1f1;*/
+    background: #5CC5CC;
+    /*background: #777777;*/
+    color: white;
+}
+#nav ul a{
+    white-space: nowrap;
+    display:block;
+}
+a{
+    color: #000000;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+
+
+
 @media only screen and (min-width: 768px) {
     .container {
         min-width: 6in;
@@ -541,8 +631,7 @@ input.captcha {
         color: #000000;
         font-weight: 400;
         font-family: Raleway;
-        font-size: large;
-        line-height: 120%;
+        line-height: 130%;
     }
 
     .initialText {
@@ -552,15 +641,19 @@ input.captcha {
         font-weight: 400;
         font-size: large;
         font-family: Raleway;
-        line-height: 120%;
+        line-height: 130%;
+    }
+
+    a.shownArrow {
+        font-size: 1.2em;
     }
 
 }
 
 @media only screen and (max-width: 767px) {
     .container {
-        min-width: 100%;
-        max-width: 100%;
+        min-width: 95%;
+        max-width: 95%;
         font-size: small;
         padding-top: 5px;
         padding-bottom: 5px;
@@ -572,7 +665,7 @@ input.captcha {
         font-size: larger;
         font-weight: 500;
         font-family: Raleway;
-        line-height: 120%;
+        line-height: 130%;
     }
 
     .initialText {
@@ -582,7 +675,10 @@ input.captcha {
         font-weight: 500;
         font-family: Raleway;
         line-height: 120%;
+    }
 
+    a.shownArrow {
+        font-size: 1em;
     }
 
 }
