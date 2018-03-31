@@ -41,19 +41,19 @@
                     <ul>
                         @role('admin')
                         <li><a href="{{ URL::to('/addPost') }}">Add Post</a></li>
-                        @endrole
                         <li><a href="{{ URL::to('/') }}">Posts</a></li>
                         <li><a href="{{ URL::to('/archives') }}">Archives</a></li>
                         <li><a href="{{ URL::to('/biography') }}">About</a></li>
-                        @role('admin','shop-keeper')
                         <li><a href="{{ URL::to('/editTitles') }}">Edit Web Titles</a></li>
                         <li><a href="{{ URL::to('/findDonations') }}">Donors</a></li>
                         <li><a href="{{ URL::to('/admin/logout') }}">Logout</a></li>
                         @else
+                            <li><a href="{{ URL::to('/biography') }}">About</a></li>
                             <li><a href="{{ URL::to('/') }}/donate">Donate</a></li>
+                            <li><a href="{{ URL::to('/') }}">Posts</a></li>
+                            <li><a href="{{ URL::to('/archives') }}">Archives</a></li>
                             <li><a href="{{ URL::to('/contact') }}">Contact</a></li>
                             <li><a href="{{ URL::to('/admin/login') }}">Login</a></li>
-                            {{--<a href="{{ URL::to('/admin/register') }}">Register</a>--}}
                             @endrole
                     </ul>
                 </li>
