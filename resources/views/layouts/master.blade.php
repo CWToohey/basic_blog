@@ -78,9 +78,9 @@
         @yield('content')
     </div>
     <div class="article">
-        <h3><a class="shownArrow" href="{{ URL::to('/') }}">Posts</a> | <a class="shownArrow"
+        <h3><a class="shownArrow" href="{{ URL::to('/') }}">Posts</a> | <a class="footers"
                                                                            href="{{ URL::to('/') }}/donate">Donate</a> |
-            <a class="shownArrow"
+            <a class="footers"
                href="{{ URL::to('/') }}/archives">Archives</a>
         </h3>
     </div>

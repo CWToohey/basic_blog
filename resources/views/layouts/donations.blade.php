@@ -35,8 +35,8 @@
         @yield('content')
     </div>
     <div class="article">
-        <h3><a class="shownArrow" href="{{ URL::to('/') }}">Home</a> |
-            <a class="shownArrow"
+        <h3><a class="footers" href="{{ URL::to('/') }}">Posts</a> |
+            <a class="footers"
                href="{{ URL::to('/') }}/archives">Archives</a>
         </h3>
     </div>

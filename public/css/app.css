@@ -285,10 +285,12 @@ input[type=text] {
 .hiddenArrow {
     visibility: hidden;
 }
+
 a.hiddenArrow:link, a.hiddenArrow:visited, a.hiddenArrow:hover, a.hiddenArrow:active {
     text-decoration: none;
     color: #d0d0d0;
 }
+
 a.muted:link, a.muted:visited, a.muted:hover, a.muted:active {
     text-decoration: none;
     color: transparent;
@@ -299,11 +301,16 @@ a.shownArrow:link, a.shownArrow:visited, a.shownArrow:active {
     text-decoration: none;
 }
 
-a.shownArrowLarger {
-    font-size: 2em;
+a.shownArrow:hover{
+    color: #04BFCC;
 }
 
-a.shownArrow:hover{
+a.footers {
+    color: #999999;
+    text-decoration: none;
+}
+
+a.footers:hover {
     color: #04BFCC;
 }
 
@@ -648,6 +655,10 @@ a{
         font-size: 1.2em;
     }
 
+    a.footers {
+        font-size: 1.2em;
+    }
+
 }
 
 @media only screen and (max-width: 767px) {
@@ -679,6 +690,10 @@ a{
 
     a.shownArrow {
         font-size: 1em;
+    }
+
+    a.footers {
+        font-size: .9em;
     }
 
 }
